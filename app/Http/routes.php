@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('kebersihan', 'kebersihan_aja@index');
+Route::get('kebersihan/{nama}', 'kebersihan_aja@profile');
+
+Route::get('barang', ['as'=> 'barang.index', 'uses' => 'BarangController@index']);
+Route::get('barang/buat', ['as' => 'barang.buat','uses' => 'BarangController@buat']);
+Route::match(array('PUT','PATCH'),'barang/{id}', ['as' => 'barang.update','uses' => 'BarangController@update']);
+Route::post('barang', ['as' => 'barang.simpan','uses' => 'BarangController@simpan']);
+Route::delete('barang/{id}', ['as' => 'barang.hapus', 'uses' => 'BarangController@hapus']);
+Route::get('barang/{id}/edit', ['as' => 'barang.edit', 'uses' => 'BarangController@edit']);
 /*
 |--------------------------------------------------------------------------
 | Application Routes
